@@ -11,7 +11,9 @@ const fetchAllPlayers = async () => {
   try {
     const response = await fetch(`${API_URL}/players`);
     const result = await response.json();
-    console.log(result);
+    const playersArray = result.data.players
+    console.log(playersArray);
+    return playersArray;
   } catch (err) {
     console.error("Uh oh, trouble fetching players!", err);
   }
