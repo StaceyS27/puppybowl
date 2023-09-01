@@ -44,6 +44,21 @@ describe("fetchSinglePlayer", () => {
 })
 
 // TODO: Tests for `addNewPlayer`
+describe("addNewPlayer", () => {
+
+  test("returns an object", async () => {
+    expect(typeof player).toBe(Object); 
+  })
+
+  test("returns player with name and id", async () => {
+      expect(player).toHaveProperty("name");
+      expect(player).toHaveProperty("id");
+    });
+
+})
+
+
+
 
 // (Optional) TODO: Tests for `removePlayer`
 
