@@ -26,11 +26,14 @@ const fetchAllPlayers = async () => {
  */
 const fetchSinglePlayer = async (playerId) => {
   try {
-    // TODO
+    const response = await fetch (`${API_URL}/players/${playerId}`)
+    const result = await response.json();
+    console.log(result);
+    return result;
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
-};
+}
 
 /**
  * Adds a new player to the roster via the API.
