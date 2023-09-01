@@ -29,6 +29,10 @@ describe("fetchAllPlayers", () => {
 
 // TODO: Tests for `fetchSinglePlayer`
 describe("fetchSinglePlayer", () => {
+  
+  test("playerId is a number", async () => {
+    expect(typeof playerId).toBe('number');
+  })
 
   test("returns an object", async () => {
     expect(typeof fetchSinglePlayer()).toBe('object');
@@ -42,12 +46,6 @@ describe("fetchSinglePlayer", () => {
 
 // TODO: Tests for `addNewPlayer`
 describe("addNewPlayer", () => {
-
-  test("playerId is a number", async () => {
-    expect(typeof playerId).toBe('number');
-  }
-  
-  )
 
   test("returns an object", async () => {
     expect(typeof player).toBe('object'); 
