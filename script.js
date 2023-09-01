@@ -35,6 +35,7 @@ const fetchSinglePlayer = async (playerId) => {
   }
 }
 
+
 /**
  * Adds a new player to the roster via the API.
  * @param {Object} playerObj the player to add
