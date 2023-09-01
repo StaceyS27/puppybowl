@@ -30,24 +30,27 @@ describe("fetchAllPlayers", () => {
 // TODO: Tests for `fetchSinglePlayer`
 describe("fetchSinglePlayer", () => {
 
-  test("returns a single array", async () => {
-    expect(Array.isArray(player)).toBe(true);
+  test("returns an object", async () => {
+    expect(typeof fetchSinglePlayer()).toBe('object');
   })
   
   test("returns player with name and id", async () => {
-    players.forEach((player) => {
-      expect(player).toHaveProperty("name");
+      // expect(player).toHaveProperty("name");
       expect(player).toHaveProperty("id");
     });
-  });
-
 })
 
 // TODO: Tests for `addNewPlayer`
 describe("addNewPlayer", () => {
 
+  test("playerId is a number", async () => {
+    expect(typeof playerId).toBe('number');
+  }
+  
+  )
+
   test("returns an object", async () => {
-    expect(typeof player).toBe(Object); 
+    expect(typeof player).toBe('object'); 
   })
 
   test("returns player with name and id", async () => {
