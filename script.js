@@ -93,7 +93,7 @@ const removePlayer = async (playerId) => {
  * Note: this function should replace the current contents of `<main>`, not append to it.
  * @param {Object[]} playerList - an array of player objects
  */
-//---------------------------------------RENDER `DETAILS BUTTON`ON CARD---------------------------------------
+//---------------------------------------DETAILS BUTTON ON CARD---------------------------------------
 const getDetailButton = (player) => {
   const detailButton = document.createElement('button');
   detailButton.textContent = "See Details";
@@ -216,10 +216,10 @@ const renderSinglePlayer = (player) => {
   playerContainerEl.appendChild(singlePlayerViewContainer);
 };
 
-//---------------------------------------RENDER `DELETE BUTTON`---------------------------------------
+//---------------------------------------DELETE BUTTON---------------------------------------
 //Delete button for single player view
 
-//---------------------------------------RENDER `BACK BUTTON`---------------------------------------
+//---------------------------------------BACK BUTTON---------------------------------------
 //Back button from single player view to main view
 const getBackButton = () =>{
   const backButton = document.createElement('button');
