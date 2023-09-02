@@ -276,6 +276,22 @@ const getBackButton = () =>{
  */
 const renderNewPlayerForm = () => {
   try {
+    const playerForm = document.createElement('form');
+
+    //name label and input
+    const nameLabel =  document.createElement('label');
+    nameLabel.htmlFor = 'name';
+    nameLabel.textContent = 'Name';
+
+    const nameInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.id = 'name';
+    titleInput.placeholder = 'Enter name...';
+
+    // breed label and input
+    const breedLabel = document.createElement('label');
+    
+
     
     
   } catch (err) {
