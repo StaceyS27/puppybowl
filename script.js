@@ -309,6 +309,17 @@ const renderNewPlayerForm = () => {
     statusInput.placeholder = 'Enter status...';
 
     //image label and input
+    const imageLabel = document.createElement('label');
+    imageLabel.htmlFor = 'image_url';
+    imageLabel.textContent = "Image URL";
+
+    const imageInput = document.createElement('input')
+    imageInput.type = 'text';
+    imageInput.id = 'image_url';
+    imageInput.name = 'image_url';
+    imageInput.placeholder = "Enter image URL...";
+
+
     
 
     
