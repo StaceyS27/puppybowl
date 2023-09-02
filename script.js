@@ -277,6 +277,7 @@ const getBackButton = () =>{
 const renderNewPlayerForm = () => {
   try {
     const playerForm = document.createElement('form');
+    playerForm.setAttribute("id", "new-player-form");
 
     //name label and input
     const nameLabel =  document.createElement('label');
@@ -339,12 +340,25 @@ const renderNewPlayerForm = () => {
       submitButton
     )
 
+    playerForm.addEventListner('submit', async(event) => {
+      event.preventDefault();
 
+      const form = event.target;
 
+      const playerObj = {
+        name: form.name.value,
+        breed: form.breed.value,
+        status: form.breed.value,
+        image_url: form.image_url.value,
+      };
 
+      await addNewPlayer(playerObj);
 
-    
-    
+      form.reset();
+    })
+
+    newPlayerFormEl.appendChild(playerForm);
+  
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
