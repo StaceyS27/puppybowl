@@ -330,8 +330,15 @@ const renderNewPlayerForm = () => {
     playerForm.append(
       nameLabel,
       nameInput,
-
+      breedLabel, 
+      breedInput,
+      statusLabel,
+      statusInput,
+      imageLabel, 
+      imageInput,
+      submitButton
     )
+
 
 
 
