@@ -61,6 +61,9 @@ const addNewPlayer = async (playerObj) => {
     const player = await response.json();
     console.log("Player added: ", player);
 
+    const players = await fetchAllPlayers();
+    renderAllPlayers(players);
+
   } catch (err) {
     console.error("Oops, something went wrong with adding that player!", err);
   }
