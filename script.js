@@ -299,8 +299,16 @@ const renderNewPlayerForm = () => {
     breedInput.placeholder = 'Enter breed...';
 
     //status label and input
-    
+    const statusLabel = document.createElement('label');
+    statusLabel.htmlFor = 'status';
+    statusLabel.textContent = 'Status';
 
+    const statusInput = document.createElement('input');
+    statusInput.type = 'text';
+    statusInput.id = 'status';
+    statusInput.placeholder = 'Enter status...';
+
+    //image label and input
     
 
     
