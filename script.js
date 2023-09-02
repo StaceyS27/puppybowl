@@ -77,7 +77,17 @@ const addNewPlayer = async (playerObj) => {
  */
 const removePlayer = async (playerId) => {
   try {
-    // TODO
+    const response = await fetch(`${API_URL}/players/${playerId}`,
+      {
+        method: "DELETE",
+      },
+    );
+    const result = await response.json();
+    console.log(result);
+
+    const players = await fetchAllPlayers();
+    renderAllPlayers(players);
+
   } catch (err) {
     console.error(
       `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -158,7 +168,8 @@ const renderAllPlayers = async (playerList) => {
       playerIdHeading,
       playerBreedHeading,
       playerImage,
-      getDetailButton(player)
+      getDetailButton(player),
+      getDeleteButton(player),
     );
     //Append this player to main player container
     playerContainerEl.appendChild(playerEl)
@@ -222,6 +233,7 @@ const renderSinglePlayer = (player) => {
     playerBreedHeading,
     playerImage,
     getBackButton(),
+    getDeleteButton(),
   )
 
   //Append
@@ -230,7 +242,19 @@ const renderSinglePlayer = (player) => {
 };
 
 //---------------------------------------DELETE BUTTON---------------------------------------
-//Delete button for single player view
+//Delete button for all players view or single player view
+
+const getDeleteButton = (player) => {
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('delete-button');
+  deleteButton.textContent = "Remove";
+
+  deleteButton.addEventListener('click', (event) => {
+    removePlayer(player.id);
+  })
+
+  return deleteButton;
+}
 
 //---------------------------------------BACK BUTTON---------------------------------------
 //Back button from single player view to main view
