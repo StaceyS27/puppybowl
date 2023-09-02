@@ -3,6 +3,11 @@
 const cohortName = "2306-GHP-ET-WEB-PT-SF";
 const API_URL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
 
+//---------------------------------------CONTAINERS---------------------------------------
+const playerContainerEl = document.getElementById("player-container");
+const newPlayerFormEl = document.getElementById("new-player-form");
+
+//---------------------------------------FETCH ALL PLAYERS---------------------------------------
 /**
  * Fetches all players from the API.
  * @returns {Object[]} the array of player objects
@@ -15,10 +20,11 @@ const fetchAllPlayers = async () => {
     console.log(playersArray);
     return playersArray;
   } catch (err) {
-    console.error("Uh oh, trouble fetching players!", err);
+    console.error("Error: Your dog just chased a bug, resulting in a temporary glitch. We'll have it fetched in no time!", err);
   }
-};
+}
 
+//---------------------------------------FETCH SINGLE PLAYERS---------------------------------------
 /**
  * Fetches a single player from the API.
  * @param {number} playerId
@@ -26,16 +32,17 @@ const fetchAllPlayers = async () => {
  */
 const fetchSinglePlayer = async (playerId) => {
   try {
-    const response = await fetch (`${API_URL}/players/${playerId}`)
+    const response = await fetch(`${API_URL}/players/${playerId}`)
     const result = await response.json();
     console.log(result);
     return result;
   } catch (err) {
-    console.error(`Oh no, trouble fetching player #${playerId}!`, err);
+    console.error(`Error:#${playerId} just chased a bug, resulting in a temporary glitch. We'll have it fetched in no time!`, err);
   }
-}
+};
 
 
+//---------------------------------------ADD NEW PLAYERS---------------------------------------
 /**
  * Adds a new player to the roster via the API.
  * @param {Object} playerObj the player to add
@@ -49,6 +56,8 @@ const addNewPlayer = async (playerObj) => {
   }
 };
 
+
+//---------------------------------------REMOVE PLAYER---------------------------------------
 /**
  * Removes a player from the roster via the API.
  * @param {number} playerId the ID of the player to remove
@@ -63,6 +72,7 @@ const removePlayer = async (playerId) => {
     );
   }
 };
+
 
 /**
  * Updates `<main>` to display a list of all players.
@@ -83,10 +93,66 @@ const removePlayer = async (playerId) => {
  * Note: this function should replace the current contents of `<main>`, not append to it.
  * @param {Object[]} playerList - an array of player objects
  */
-const renderAllPlayers = (playerList) => {
-  // TODO
+//---------------------------------------DETAILS BUTTON ON CARD---------------------------------------
+const getDetailButton = (player) => {
+  const detailButton = document.createElement('button');
+  detailButton.textContent = "See Details";
+  detailButton.addEventListener('click', (event) => {
+    renderSinglePlayer(player);//See details" button that, when clicked, calls `renderSinglePlayer`to display more information about the player
+  });
+  return detailButton;
+}
+
+//---------------------------------------RENDER ALL PLAYERS---------------------------------------
+const renderAllPlayers = async (playerList) => {
+  //Create error if there is no `playerList` or the `playerList`file is empty
+  if (!playerList || playerList.length === 0) {
+    const h2 = document.createElement('h2');
+    h2.textContent = "Error: Your dog just chased a bug, resulting in a temporary glitch. We'll have it fixed soon!";
+    playerContainerEl.appendChild(h2);
+    return;
+  }
+  //Clears the HTML for a clean file
+  playerContainerEl.innerHTML = ""
+  //
+  playerList.forEach(player => {
+    //Create container for the player card
+    const playerEl = document.createElement('div');//Creating div element 
+    playerEl.classList.add('playerCard');//Creating class element for CSS
+
+    //Render the Name
+    const playerNameHeading = document.createElement('h2');
+    playerNameHeading.textContent = `Name: ${player.name}`;
+
+    //Render the ID
+    const playerIdHeading = document.createElement('h3');
+    playerIdHeading.textContent = `ID: ${player.id}`;
+
+    //Render the Breed
+    const playerBreedHeading = document.createElement('h3');
+    playerBreedHeading.textContent = `Breed: ${player.breed}`;
+
+    //Render the Image
+    const playerImage = document.createElement('img');
+    playerImage.src = player.imageUrl;
+    playerImage.alt = player.name;
+
+    //TO DO:Render team name (if the player has one, or "Unassigned")
+
+    //Append all the sections into the playerContainerEl
+    playerEl.append(
+      playerNameHeading,
+      playerIdHeading,
+      playerBreedHeading,
+      playerImage,
+      getDetailButton(player)
+    );
+    //Append this player to main player container
+    playerContainerEl.appendChild(playerEl)
+  });
 };
 
+//---------------------------------------RENDER SINGLE PLAYER---------------------------------------
 /**
  * Updates `<main>` to display a single player.
  * The player is displayed in a card with the following information:
@@ -101,9 +167,71 @@ const renderAllPlayers = (playerList) => {
  * @param {Object} player an object representing a single player
  */
 const renderSinglePlayer = (player) => {
-  // TODO
+  //Create error if there is no `playerList` or the `playerList`file is empty
+  playerContainerEl.innerHTML = " ";
+  if (!player || player.length === 0) {
+    const h2 = document.createElement('h2');
+    h2.textContent = "Error: Your dog just chased a bug, resulting in a temporary glitch. We'll have it fixed soon!";
+    playerContainerEl.appendChild(h2);
+    return;
+  }
+
+  //Clears the HTML for a clean file
+  playerContainerEl.innerHTML = ""
+
+  //Make a new player view container
+  const singlePlayerViewContainer = document.createElement('div');
+  singlePlayerViewContainer.classList.add('singlePlayerCardView');//Class for CSS
+
+  const playerInfoEl = document.createElement('div');
+  playerInfoEl.classList.add('player');
+
+  //Render the Name
+  const playerNameHeading = document.createElement('h2');
+  playerNameHeading.textContent = `Name: ${player.name}`;
+
+  //Render the ID
+  const playerIdHeading = document.createElement('h3');
+  playerIdHeading.textContent = `ID: ${player.id}`;
+
+  //Render the Breed
+  const playerBreedHeading = document.createElement('h3');
+  playerBreedHeading.textContent = `Breed: ${player.breed}`;
+
+  //Render the Image
+  const playerImage = document.createElement('img');
+  playerImage.src = player.imageUrl;
+  playerImage.alt = player.name;
+  
+  playerInfoEl.append(
+    playerNameHeading,
+    playerIdHeading,
+    playerBreedHeading,
+    playerImage,
+    getBackButton(),
+  )
+
+  //Append
+  playerContainerEl.appendChild(playerInfoEl);
+  playerContainerEl.appendChild(singlePlayerViewContainer);
 };
 
+//---------------------------------------DELETE BUTTON---------------------------------------
+//Delete button for single player view
+
+//---------------------------------------BACK BUTTON---------------------------------------
+//Back button from single player view to main view
+const getBackButton = () =>{
+  const backButton = document.createElement('button');
+  backButton.textContent = "Return Back";
+  backButton.addEventListener('click', async (event) =>{
+    const returnToPlayers = await fetchAllPlayers();
+    renderAllPlayers(returnToPlayers);
+  });
+  return backButton;
+}
+
+//---------------------------------------RENDER NEW PLAYER FORM---------------------------------------
 /**
  * Fills in `<form id="new-player-form">` with the appropriate inputs and a submit button.
  * When the form is submitted, it should call `addNewPlayer`, fetch all players,
@@ -117,16 +245,18 @@ const renderNewPlayerForm = () => {
   }
 };
 
+
+//---------------------------------------INITIALIZE FUNCTION---------------------------------------
 /**
  * Initializes the app by fetching all players and rendering them to the DOM.
  */
 const init = async () => {
   const players = await fetchAllPlayers();
   renderAllPlayers(players);
-
   renderNewPlayerForm();
 };
 
+//---------------------------------------EXPORT FOR TESTING---------------------------------------
 // This script will be run using Node when testing, so here we're doing a quick
 // check to see if we're in Node or the browser, and exporting the functions
 // we want to test if we're in Node.
