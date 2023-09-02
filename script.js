@@ -208,6 +208,7 @@ const renderSinglePlayer = (player) => {
     playerIdHeading,
     playerBreedHeading,
     playerImage,
+    getBackButton(),
   )
 
   //Append
