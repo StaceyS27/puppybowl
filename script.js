@@ -224,7 +224,11 @@ const renderSinglePlayer = (player) => {
 const getBackButton = () =>{
   const backButton = document.createElement('button');
   backButton.textContent = "Return Back";
-  backButton.addEventListener()
+  backButton.addEventListener('click', async (event) =>{
+    const returnToPlayers = await fetchAllPlayers();
+    renderAllPlayers(returnToPlayers);
+  });
+  return backButton;
 }
 
 //---------------------------------------RENDER NEW PLAYER FORM---------------------------------------
