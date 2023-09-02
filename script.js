@@ -284,9 +284,10 @@ const renderNewPlayerForm = () => {
     nameLabel.textContent = 'Name';
 
     const nameInput = document.createElement('input');
-    titleInput.type = 'text';
-    titleInput.id = 'name';
-    titleInput.placeholder = 'Enter name...';
+    nameInput.type = 'text';
+    nameInput.id = 'name';
+    nameInput.name = 'name'
+    nameInput.placeholder = 'Enter name...';
 
     // breed label and input
     const breedLabel = document.createElement('label');
@@ -296,6 +297,7 @@ const renderNewPlayerForm = () => {
     const breedInput = document.createElement('input');
     breedInput.type = 'text';
     breedInput.id = 'breed'
+    breedInput.name = 'breed'
     breedInput.placeholder = 'Enter breed...';
 
     //status label and input
@@ -306,6 +308,7 @@ const renderNewPlayerForm = () => {
     const statusInput = document.createElement('input');
     statusInput.type = 'text';
     statusInput.id = 'status';
+    statusInput.name = 'status'
     statusInput.placeholder = 'Enter status...';
 
     //image label and input
@@ -319,8 +322,19 @@ const renderNewPlayerForm = () => {
     imageInput.name = 'image_url';
     imageInput.placeholder = "Enter image URL...";
 
+    //submit button
+    const submitButton = document.createElement('button');
+    submitButton.type = 'submit';
+    submitButton.textContent = "Submit";
 
-    
+    playerForm.append(
+      nameLabel,
+      nameInput,
+
+    )
+
+
+
 
     
     
