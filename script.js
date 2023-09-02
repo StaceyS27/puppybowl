@@ -290,6 +290,17 @@ const renderNewPlayerForm = () => {
 
     // breed label and input
     const breedLabel = document.createElement('label');
+    breedLabel.htmlFor = 'breed';
+    breedLabel.textContent = 'Breed';
+
+    const breedInput = document.createElement('input');
+    breedInput.type = 'text';
+    breedInput.id = 'breed'
+    breedInput.placeholder = 'Enter breed...';
+
+    //status label and input
+    
+
     
 
     
