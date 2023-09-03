@@ -86,50 +86,6 @@ const removePlayer = async (playerId) => {
 const renderAllPlayers = (playerList) => {
   // TODO
 };
-// Inside your script.js file
-
-// Function to handle form submission and add a new player
-async function addPlayer(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    const name = form.name.value;
-    const breed = form.breed.value;
-    const imageUrl = form.imageUrl.value;
-
-    const newPlayer = {
-        name: name,
-        breed: breed,
-        imageUrl: imageUrl,
-        status: "rookie" // You can set the default status as needed
-    };
-
-    try {
-        const response = await fetch(`${baseURL}/players`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newPlayer)
-        });
-        
-        const result = await response.json();
-
-        if (result.success) {
-            // Player added successfully, update the roster display
-            displayRoster();
-            form.reset();
-        } else {
-            console.error(result.error.message);
-        }
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-// Add a submit event listener to the form
-const addPlayerForm = document.getElementById('add-player-form');
-addPlayerForm.addEventListener('submit', addPlayer);
 
 /**
  * Updates `<main>` to display a single player.
