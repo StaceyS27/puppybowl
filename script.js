@@ -277,7 +277,6 @@ const getBackButton = () =>{
 const renderNewPlayerForm = () => {
   try {
     const playerForm = document.createElement('form');
-    playerForm.setAttribute("id", "new-player-form");
 
     //name label and input
     const nameLabel =  document.createElement('label');
@@ -287,7 +286,7 @@ const renderNewPlayerForm = () => {
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.id = 'name';
-    nameInput.name = 'name'
+    nameInput.name = 'name';
     nameInput.placeholder = 'Enter name...';
 
     // breed label and input
@@ -297,8 +296,8 @@ const renderNewPlayerForm = () => {
 
     const breedInput = document.createElement('input');
     breedInput.type = 'text';
-    breedInput.id = 'breed'
-    breedInput.name = 'breed'
+    breedInput.id = 'breed';
+    breedInput.name = 'breed';
     breedInput.placeholder = 'Enter breed...';
 
     //status label and input
@@ -309,7 +308,7 @@ const renderNewPlayerForm = () => {
     const statusInput = document.createElement('input');
     statusInput.type = 'text';
     statusInput.id = 'status';
-    statusInput.name = 'status'
+    statusInput.name = 'status';
     statusInput.placeholder = 'Enter status...';
 
     //image label and input
@@ -338,21 +337,21 @@ const renderNewPlayerForm = () => {
       imageLabel, 
       imageInput,
       submitButton
-    )
+    );
 
-    playerForm.addEventListner('submit', async(event) => {
+    playerForm.addEventListener('submit', async(event) => {
       event.preventDefault();
 
       const form = event.target;
 
-      const playerObj = {
+      const playerData = {
         name: form.name.value,
         breed: form.breed.value,
-        status: form.breed.value,
+        status: form.status.value,
         image_url: form.image_url.value,
       };
 
-      await addNewPlayer(playerObj);
+      await addNewPlayer(playerData);
 
       form.reset();
     })
