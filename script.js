@@ -281,7 +281,7 @@ const renderNewPlayerForm = () => {
     //name label and input
     const nameLabel =  document.createElement('label');
     nameLabel.htmlFor = 'name';
-    nameLabel.textContent = 'Name';
+    nameLabel.textContent = 'Name: ';
 
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
@@ -292,7 +292,7 @@ const renderNewPlayerForm = () => {
     // breed label and input
     const breedLabel = document.createElement('label');
     breedLabel.htmlFor = 'breed';
-    breedLabel.textContent = 'Breed';
+    breedLabel.textContent = 'Breed: ';
 
     const breedInput = document.createElement('input');
     breedInput.type = 'text';
@@ -303,7 +303,7 @@ const renderNewPlayerForm = () => {
     //status label and input
     const statusLabel = document.createElement('label');
     statusLabel.htmlFor = 'status';
-    statusLabel.textContent = 'Status';
+    statusLabel.textContent = 'Status: ';
 
     const statusInput = document.createElement('input');
     statusInput.type = 'text';
@@ -314,7 +314,7 @@ const renderNewPlayerForm = () => {
     //image label and input
     const imageLabel = document.createElement('label');
     imageLabel.htmlFor = 'image_url';
-    imageLabel.textContent = "Image URL";
+    imageLabel.textContent = "Image URL: ";
 
     const imageInput = document.createElement('input')
     imageInput.type = 'text';
