@@ -233,8 +233,7 @@ const renderSinglePlayer = async (player) => {
 
   //Render Team Name
   const singlePlayerObj = await fetchSinglePlayer(player.id);
-
-
+  
   const playerTeam = document.createElement('h3');
   
   if (singlePlayerObj.teamId === null) {
