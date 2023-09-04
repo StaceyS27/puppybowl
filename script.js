@@ -160,7 +160,7 @@ const renderAllPlayers = async (playerList) => {
     playerImage.src = player.imageUrl;
     playerImage.alt = player.name;
 
-    //TO DO:Render team name (if the player has one, or "Unassigned")
+    //TO DO:Render team name (if the player has one, or "Unassigned") (see below!=])
 
     //Append all the sections into the playerContainerEl
     playerEl.append(
@@ -330,18 +330,6 @@ const renderNewPlayerForm = () => {
     statusInput.id = 'status';
     statusInput.name = 'status';
     statusInput.placeholder = 'Enter status...';
-
-    // //team label and input
-    // const teamLabel = document.createElement('label');
-    // teamLabel.htmlFor = 'team';
-    // teamLabel.textContent = 'Team: ';
-
-    // const teamInput = document.createElement('input');
-    // teamInput.type = 'text';
-    // teamInput.id = 'team'
-    // teamInput.name = 'team';
-    // teamInput.placeholder = 'Enter team...';
-
 
     //image label and input
     const imageLabel = document.createElement('label');
