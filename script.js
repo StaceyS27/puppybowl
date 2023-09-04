@@ -222,6 +222,10 @@ const renderSinglePlayer = (player) => {
   const playerBreedHeading = document.createElement('h3');
   playerBreedHeading.textContent = `Breed: ${player.breed}`;
 
+  //Render the Status
+  const playerStatusHeading = document.createElement('h3');
+  playerStatusHeading.textContent = `Status: ${player.status}`;
+
   //Render the Image
   const playerImage = document.createElement('img');
   playerImage.src = player.imageUrl;
@@ -231,6 +235,7 @@ const renderSinglePlayer = (player) => {
     playerNameHeading,
     playerIdHeading,
     playerBreedHeading,
+    playerStatusHeading,
     playerImage,
     getBackButton(),
     getDeleteButton(player),
