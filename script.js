@@ -234,8 +234,15 @@ const renderSinglePlayer = async (player) => {
   //Render Team Name
   const singlePlayerObj = await fetchSinglePlayer(player.id);
 
+
   const playerTeam = document.createElement('h3');
+  
+  if (singlePlayerObj.teamId === null) {
+    playerTeam.textContent = "Team: Unassigned";  
+  }
+  else {
   playerTeam.textContent = `Team: ${singlePlayerObj.team.name}`;
+  }
   
     
   playerInfoEl.append(
@@ -323,6 +330,18 @@ const renderNewPlayerForm = () => {
     statusInput.id = 'status';
     statusInput.name = 'status';
     statusInput.placeholder = 'Enter status...';
+
+    // //team label and input
+    // const teamLabel = document.createElement('label');
+    // teamLabel.htmlFor = 'team';
+    // teamLabel.textContent = 'Team: ';
+
+    // const teamInput = document.createElement('input');
+    // teamInput.type = 'text';
+    // teamInput.id = 'team'
+    // teamInput.name = 'team';
+    // teamInput.placeholder = 'Enter team...';
+
 
     //image label and input
     const imageLabel = document.createElement('label');
