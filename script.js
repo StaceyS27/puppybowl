@@ -233,7 +233,7 @@ const renderSinglePlayer = (player) => {
     playerBreedHeading,
     playerImage,
     getBackButton(),
-    getDeleteButton(),
+    getDeleteButton(player),
   )
 
   //Append
