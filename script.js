@@ -175,50 +175,6 @@ const renderAllPlayers = async (playerList) => {
     playerContainerEl.appendChild(playerEl)
   });
 };
-// Inside your script.js file
-
-// Function to handle form submission and add a new player
-async function addPlayer(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    const name = form.name.value;
-    const breed = form.breed.value;
-    const imageUrl = form.imageUrl.value;
-
-    const newPlayer = {
-        name: name,
-        breed: breed,
-        imageUrl: imageUrl,
-        status: "rookie" // You can set the default status as needed
-    };
-
-    try {
-        const response = await fetch(`${baseURL}/players`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newPlayer)
-        });
-        
-        const result = await response.json();
-
-        if (result.success) {
-            // Player added successfully, update the roster display
-            displayRoster();
-            form.reset();
-        } else {
-            console.error(result.error.message);
-        }
-    } catch (err) {
-        console.error(err);
-    }
-}
-
-// Add a submit event listener to the form
-const addPlayerForm = document.getElementById('add-player-form');
-addPlayerForm.addEventListener('submit', addPlayer);
 
 //---------------------------------------RENDER SINGLE PLAYER---------------------------------------
 /**
@@ -282,7 +238,7 @@ const renderSinglePlayer = (player) => {
 
   //Append
   playerContainerEl.appendChild(playerInfoEl);
-  playerContainerEl.appendChild(singlePlayerViewContainer);
+
 };
 
 //---------------------------------------DELETE BUTTON---------------------------------------
@@ -321,7 +277,7 @@ const getBackButton = () =>{
 const renderNewPlayerForm = () => {
   try {
     const playerForm = document.createElement('form');
-
+  
     //name label and input
     const nameLabel =  document.createElement('label');
     nameLabel.htmlFor = 'name';
@@ -330,7 +286,7 @@ const renderNewPlayerForm = () => {
     const nameInput = document.createElement('input');
     nameInput.type = 'text';
     nameInput.id = 'name';
-    nameInput.name = 'name';
+    nameInput.name = 'name'
     nameInput.placeholder = 'Enter name...';
 
     // breed label and input
@@ -340,8 +296,8 @@ const renderNewPlayerForm = () => {
 
     const breedInput = document.createElement('input');
     breedInput.type = 'text';
-    breedInput.id = 'breed';
-    breedInput.name = 'breed';
+    breedInput.id = 'breed'
+    breedInput.name = 'breed'
     breedInput.placeholder = 'Enter breed...';
 
     //status label and input
