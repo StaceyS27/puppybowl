@@ -34,8 +34,8 @@ const fetchSinglePlayer = async (playerId) => {
   try {
     const response = await fetch(`${API_URL}/players/${playerId}`)
     const result = await response.json();
-    console.log(result);
-    return result;
+    singlePlayerObj = result.data.player
+    return singlePlayerObj;
   } catch (err) {
     console.error(`Error:#${playerId} just chased a bug, resulting in a temporary glitch. We'll have it fetched in no time!`, err);
   }
@@ -190,7 +190,7 @@ const renderAllPlayers = async (playerList) => {
  * will call `renderAllPlayers` to re-render the full list of players.
  * @param {Object} player an object representing a single player
  */
-const renderSinglePlayer = (player) => {
+const renderSinglePlayer = async (player) => {
   //Create error if there is no `playerList` or the `playerList`file is empty
   playerContainerEl.innerHTML = " ";
   if (!player || player.length === 0) {
@@ -230,13 +230,21 @@ const renderSinglePlayer = (player) => {
   const playerImage = document.createElement('img');
   playerImage.src = player.imageUrl;
   playerImage.alt = player.name;
+
+  //Render Team Name
+  const singlePlayerObj = await fetchSinglePlayer(player.id);
+
+  const playerTeam = document.createElement('h3');
+  playerTeam.textContent = `Team: ${singlePlayerObj.team.name}`;
   
+    
   playerInfoEl.append(
     playerNameHeading,
     playerIdHeading,
     playerBreedHeading,
     playerStatusHeading,
     playerImage,
+    playerTeam,
     getBackButton(),
     getDeleteButton(player),
   )
