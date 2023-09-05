@@ -37,8 +37,8 @@ const fetchSinglePlayer = async (playerId) => {
   try {
     const response = await fetch(`${API_URL}/players/${playerId}`);
     const result = await response.json();
-    console.log(result);
-    return result;
+    singlePlayerObj = result.data.player
+    return singlePlayerObj;
   } catch (err) {
     console.error(
       `Error:#${playerId} just chased a bug, resulting in a temporary glitch. We'll have it fetched in no time!`,
@@ -160,7 +160,7 @@ const renderAllPlayers = async (playerList) => {
     playerImage.src = player.imageUrl;
     playerImage.alt = player.name;
 
-    //TO DO:Render team name (if the player has one, or "Unassigned")
+    //TO DO:Render team name (if the player has one, or "Unassigned") (see below!=])
 
     //Append all the sections into the playerContainerEl
     playerEl.append(
@@ -175,6 +175,7 @@ const renderAllPlayers = async (playerList) => {
     playerContainerEl.appendChild(playerEl);
   });
 };
+<<<<<<< HEAD
 
 // Function to handle form submission and add a new player
 async function addPlayer(event) {
@@ -218,6 +219,8 @@ async function addPlayer(event) {
 // Add a submit event listener to the form
 const addPlayerForm = document.getElementById("add-player-form");
 addPlayerForm.addEventListener("submit", addPlayer);
+=======
+>>>>>>> refs/remotes/origin/main
 
 //---------------------------------------RENDER SINGLE PLAYER---------------------------------------
 /**
@@ -233,7 +236,7 @@ addPlayerForm.addEventListener("submit", addPlayer);
  * will call `renderAllPlayers` to re-render the full list of players.
  * @param {Object} player an object representing a single player
  */
-const renderSinglePlayer = (player) => {
+const renderSinglePlayer = async (player) => {
   //Create error if there is no `playerList` or the `playerList`file is empty
   playerContainerEl.innerHTML = " ";
   if (!player || player.length === 0) {
@@ -266,23 +269,50 @@ const renderSinglePlayer = (player) => {
   const playerBreedHeading = document.createElement("h3");
   playerBreedHeading.textContent = `Breed: ${player.breed}`;
 
+  //Render the Status
+  const playerStatusHeading = document.createElement('h3');
+  playerStatusHeading.textContent = `Status: ${player.status}`;
+
   //Render the Image
   const playerImage = document.createElement("img");
   playerImage.src = player.imageUrl;
   playerImage.alt = player.name;
 
+<<<<<<< HEAD
+=======
+  //Render Team Name
+  const singlePlayerObj = await fetchSinglePlayer(player.id);
+  
+  const playerTeam = document.createElement('h3');
+  
+  if (singlePlayerObj.teamId === null) {
+    playerTeam.textContent = "Team: Unassigned";  
+  }
+  else {
+  playerTeam.textContent = `Team: ${singlePlayerObj.team.name}`;
+  }
+  
+    
+>>>>>>> refs/remotes/origin/main
   playerInfoEl.append(
     playerNameHeading,
     playerIdHeading,
     playerBreedHeading,
+    playerStatusHeading,
     playerImage,
+    playerTeam,
     getBackButton(),
+<<<<<<< HEAD
     getDeleteButton()
   );
+=======
+    getDeleteButton(player),
+  )
+>>>>>>> refs/remotes/origin/main
 
   //Append
   playerContainerEl.appendChild(playerInfoEl);
-  playerContainerEl.appendChild(singlePlayerViewContainer);
+
 };
 
 //---------------------------------------DELETE BUTTON---------------------------------------
@@ -320,29 +350,50 @@ const getBackButton = () => {
  */
 const renderNewPlayerForm = () => {
   try {
+<<<<<<< HEAD
     const playerForm = document.createElement("form");
 
+=======
+    const playerForm = document.createElement('form');
+  
+>>>>>>> refs/remotes/origin/main
     //name label and input
     const nameLabel = document.createElement("label");
     nameLabel.htmlFor = "name";
     nameLabel.textContent = "Name: ";
 
+<<<<<<< HEAD
     const nameInput = document.createElement("input");
     nameInput.type = "text";
     nameInput.id = "name";
     nameInput.name = "name";
     nameInput.placeholder = "Enter name...";
+=======
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.id = 'name';
+    nameInput.name = 'name'
+    nameInput.placeholder = 'Enter name...';
+>>>>>>> refs/remotes/origin/main
 
     // breed label and input
     const breedLabel = document.createElement("label");
     breedLabel.htmlFor = "breed";
     breedLabel.textContent = "Breed: ";
 
+<<<<<<< HEAD
     const breedInput = document.createElement("input");
     breedInput.type = "text";
     breedInput.id = "breed";
     breedInput.name = "breed";
     breedInput.placeholder = "Enter breed...";
+=======
+    const breedInput = document.createElement('input');
+    breedInput.type = 'text';
+    breedInput.id = 'breed'
+    breedInput.name = 'breed'
+    breedInput.placeholder = 'Enter breed...';
+>>>>>>> refs/remotes/origin/main
 
     //status label and input
     const statusLabel = document.createElement("label");
