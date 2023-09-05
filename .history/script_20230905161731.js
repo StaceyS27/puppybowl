@@ -406,11 +406,6 @@ const renderNewPlayerForm = () => {
   }
 };
 // click event "See details" button
-const seeDetailsButton = document.getElementById("see-details-button");
-seeDetailsButton.addEventListener("click", () => {
-  const playerId = "player-id-to-view"; // Replace with the actual player ID you want to view
-  viewPlayerDetails(playerId);
-});
 //---------------------------------------INITIALIZE FUNCTION---------------------------------------
 /**
  * Initializes the app by fetching all players and rendering them to the DOM.

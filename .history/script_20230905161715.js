@@ -405,12 +405,7 @@ const renderNewPlayerForm = () => {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
 };
-// click event "See details" button
-const seeDetailsButton = document.getElementById("see-details-button");
-seeDetailsButton.addEventListener("click", () => {
-  const playerId = "player-id-to-view"; // Replace with the actual player ID you want to view
-  viewPlayerDetails(playerId);
-});
+// See details
 //---------------------------------------INITIALIZE FUNCTION---------------------------------------
 /**
  * Initializes the app by fetching all players and rendering them to the DOM.
