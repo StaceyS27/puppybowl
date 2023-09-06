@@ -151,10 +151,6 @@ const renderAllPlayers = async (playerList) => {
     const playerIdHeading = document.createElement('h3');
     playerIdHeading.textContent = `ID: ${player.id}`;
 
-    //Render the Breed
-    const playerBreedHeading = document.createElement('h3');
-    playerBreedHeading.textContent = `Breed: ${player.breed}`;
-
     //Render the Image
     const playerImage = document.createElement('img');
     playerImage.src = player.imageUrl;
@@ -166,7 +162,6 @@ const renderAllPlayers = async (playerList) => {
     playerEl.append(
       playerNameHeading,
       playerIdHeading,
-      playerBreedHeading,
       playerImage,
       getDetailButton(player),
       getDeleteButton(player),
