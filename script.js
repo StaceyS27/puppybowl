@@ -51,7 +51,7 @@ const fetchSinglePlayer = async (playerId) => {
 const addNewPlayer = async (playerObj) => {
   try {
     const response = await fetch(`${API_URL}/players`, {
-      method:"POST",
+      method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -96,26 +96,6 @@ const removePlayer = async (playerId) => {
   }
 };
 
-
-/**
- * Updates `<main>` to display a list of all players.
- *
- * If there are no players, a corresponding message is displayed instead.
- *
- * Each player is displayed in a card with the following information:
- * - name
- * - id
- * - image (with alt text of the player's name)
- *
- * Additionally, each card has two buttons:
- * - "See details" button that, when clicked, calls `renderSinglePlayer` to
- *    display more information about the player
- * - "Remove from roster" button that, when clicked, will call `removePlayer` to
- *    remove that specific player and then re-render all players
- *
- * Note: this function should replace the current contents of `<main>`, not append to it.
- * @param {Object[]} playerList - an array of player objects
- */
 //---------------------------------------DETAILS BUTTON ON CARD---------------------------------------
 const getDetailButton = (player) => {
   const detailButton = document.createElement('button');
@@ -127,6 +107,11 @@ const getDetailButton = (player) => {
 }
 
 //---------------------------------------RENDER ALL PLAYERS---------------------------------------
+/**
+ * Note: this function should replace the current contents of `<main>`, not append to it.
+ * @param {Object[]} playerList - an array of player objects
+ */
+
 const renderAllPlayers = async (playerList) => {
   //Create error if there is no `playerList` or the `playerList`file is empty
   if (!playerList || playerList.length === 0) {
@@ -173,14 +158,6 @@ const renderAllPlayers = async (playerList) => {
 
 //---------------------------------------RENDER SINGLE PLAYER---------------------------------------
 /**
- * Updates `<main>` to display a single player.
- * The player is displayed in a card with the following information:
- * - name
- * - id
- * - breed
- * - image (with alt text of the player's name)
- * - team name, if the player has one, or "Unassigned"
- *
  * The card also contains a "Back to all players" button that, when clicked,
  * will call `renderAllPlayers` to re-render the full list of players.
  * @param {Object} player an object representing a single player
@@ -200,7 +177,7 @@ const renderSinglePlayer = async (player) => {
 
   //Make a new player view container
   const singlePlayerViewContainer = document.createElement('div');
-  singlePlayerViewContainer.classList.add('singlePlayerCardView');//Class for CSS
+  singlePlayerViewContainer.classList.add('single-player-card');//Class for CSS
 
   const playerInfoEl = document.createElement('div');
   playerInfoEl.classList.add('player');
@@ -228,23 +205,23 @@ const renderSinglePlayer = async (player) => {
 
   //Render Team Name
   const singlePlayerObj = await fetchSinglePlayer(player.id);
-  
+
   const playerTeam = document.createElement('h3');
-  
+
   if (singlePlayerObj.teamId === null) {
-    playerTeam.textContent = "Team: Unassigned";  
+    playerTeam.textContent = "Team: Unassigned";
   }
   else {
-  playerTeam.textContent = `Team: ${singlePlayerObj.team.name}`;
+    playerTeam.textContent = `Team: ${singlePlayerObj.team.name}`;
   }
-  
-    
+
+
   playerInfoEl.append(
     playerNameHeading,
     playerIdHeading,
+    playerImage,
     playerBreedHeading,
     playerStatusHeading,
-    playerImage,
     playerTeam,
     getBackButton(),
     getDeleteButton(player),
@@ -272,10 +249,10 @@ const getDeleteButton = (player) => {
 
 //---------------------------------------BACK BUTTON---------------------------------------
 //Back button from single player view to main view
-const getBackButton = () =>{
+const getBackButton = () => {
   const backButton = document.createElement('button');
-  backButton.textContent = "Return Back";
-  backButton.addEventListener('click', async (event) =>{
+  backButton.textContent = "Return";
+  backButton.addEventListener('click', async (event) => {
     const returnToPlayers = await fetchAllPlayers();
     renderAllPlayers(returnToPlayers);
   });
@@ -283,17 +260,13 @@ const getBackButton = () =>{
 }
 
 //---------------------------------------RENDER NEW PLAYER FORM---------------------------------------
-/**
- * Fills in `<form id="new-player-form">` with the appropriate inputs and a submit button.
- * When the form is submitted, it should call `addNewPlayer`, fetch all players,
- * and then render all players to the DOM.
- */
+
 const renderNewPlayerForm = () => {
   try {
     const playerForm = document.createElement('form');
-  
+
     //name label and input
-    const nameLabel =  document.createElement('label');
+    const nameLabel = document.createElement('label');
     nameLabel.htmlFor = 'name';
     nameLabel.textContent = 'Name: ';
 
@@ -344,16 +317,16 @@ const renderNewPlayerForm = () => {
     playerForm.append(
       nameLabel,
       nameInput,
-      breedLabel, 
+      breedLabel,
       breedInput,
       statusLabel,
       statusInput,
-      imageLabel, 
+      imageLabel,
       imageInput,
       submitButton
     );
 
-    playerForm.addEventListener('submit', async(event) => {
+    playerForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const form = event.target;
@@ -371,12 +344,11 @@ const renderNewPlayerForm = () => {
     })
 
     newPlayerFormEl.appendChild(playerForm);
-  
+
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
 };
-
 
 //---------------------------------------INITIALIZE FUNCTION---------------------------------------
 /**

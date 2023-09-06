@@ -3,9 +3,29 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 /*-------------------PAGE BACKGROUND-------------------*/
-html{
+html {
   background-image: url(puppybowl_background.JPG);
+}
+/*-------------------HTML TITLES-------------------*/
+.page-title{
+  color: rgb(4, 4, 75) 1px 1px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-size: 30pt;
+  background-image: linear-gradient(rgb(171, 122, 0), rgb(171, 148, 18), goldenrod);
+  margin-left:30%;
+  margin-right:30%;
+  margin-bottom: 20px;
+  box-shadow: 10px 10px 10px rgb(4, 4, 75);
+  padding: 10px;
+}
+.make-player-title, .choose-player-title{
+  color: rgb(4, 4, 75) 1px 1px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: gold;
+  margin-left: 20px;
 }
 /*-------------------NAV BAR-------------------*/
 .navbar {
@@ -23,13 +43,14 @@ html{
   margin: 40px;
   color: rgb(4, 4, 75);
   border: solid 3px rgb(4, 4, 75);
-  box-shadow: 10px 10px 10px  rgb(4, 4, 75);
+  box-shadow: 10px 10px 10px rgb(4, 4, 75);
   background-color: rgb(188, 186, 203);
   font-family: Arial, Helvetica, sans-serif;
   padding-left: 40px;
   padding-right: 40px;
   text-decoration: none;
 }
+
 /*-------------------WHOLE PAGE FLEX-------------------*/
 #player-container {
   display: flex;
@@ -41,79 +62,89 @@ html{
 
 /*-------------------STYLING FOR ALL PLAYER CARDS-------------------*/
 #player-container>div {
+  flex-basis: 20%;
   margin: 10px;
   padding: 20px;
-  color:goldenrod;
+  color: goldenrod;
   text-shadow: rgb(4, 4, 75) 1px 1px;
   font-family: Arial, Helvetica, sans-serif;
   background-image: url(card_puppyBowl.JPG);
   background-size: cover;
   border-radius: 5%;
+  
 }
 
 /*-------------------ALL CARD GRID PLACEMENT-------------------*/
 .player-card {
-  width: 20%;
   display: grid;
   grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(6);
   box-shadow: 20px 20px 10px rgb(3, 29, 5);
 }
-.player-card>h2{
-  grid-column-start: 3;
-  grid-column-end: 4;
+
+.player-card>h2 {
+  grid-column-start: 4 ;
+  grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 2;
 }
-.player-card>h3{
+
+.player-card>h3 {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 3;
 }
-.player-card>img{
+
+.player-card>img {
   grid-column-start: 1;
   grid-column-end: 4;
   grid-row-start: 3;
   grid-row-end: 4;
 }
-button{
+
+button {
   grid-column-start: 1;
   grid-column-end: 5;
 }
+
 /*-------------------SINGLE CARD GRID PLACEMENT-------------------*/
 .single-player-card {
-  width: 20%;
   display: grid;
   grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(6);
   box-shadow: 20px 20px 10px rgb(3, 29, 5);
 }
-.single-player-card>h2{
+
+.single-player-card>h2 {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 2;
 }
-.single-player-card>h3{
+
+.single-player-card>h3 {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 3;
 }
-.single-player-card>img{
+
+.single-player-card>img {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end: 4;
 }
-.single-player-card>h4{
+
+.single-player-card>h4 {
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 4;
   grid-row-end: 5;
   color: goldenrod
 }
+
 /*-------------------PUPPY IMAGE-------------------*/
 /*Sizing for puppy images */
 img {
@@ -138,4 +169,23 @@ button {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 /*TO DO: Hover on buttons*/
+
+/*-------------------FORM STYLING-------------------*/
+#new-player-form {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 20px;
+  text-shadow: rgb(4, 4, 75) 1px 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16pt;
+}
+input{
+  border: solid  rgb(4, 4, 75) 1px;
+  border-radius: 10%;
+  box-shadow: 10px 10px 10px rgb(4, 4, 75);
+  background-color: rgb(213, 180, 97, 0%);/*0% turns transparent*/
+  margin-right: 10px;
+  padding: 10px;
+}
