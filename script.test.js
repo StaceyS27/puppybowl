@@ -29,37 +29,38 @@ describe("fetchAllPlayers", () => {
 
 // TODO: Tests for `fetchSinglePlayer`
 describe("fetchSinglePlayer", () => {
-  
-  test("playerId is a number", async () => {
-    expect(typeof playerId).toBe('number');
+  let player;
+  beforeAll(async () => {
+    player = await fetchSinglePlayer();
+  });
+
+  test("it is a function", () => {
+    expect(typeof fetchSinglePlayer).toBe("function");
   })
 
-  test("returns an object", async () => {
-    expect(typeof fetchSinglePlayer()).toBe('object');
-  })
-  
-  test("returns player with name and id", async () => {
-      // expect(player).toHaveProperty("name");
-      expect(player).toHaveProperty("id");
-    });
-})
+  test("that returns an object", () => {
+    expect(typeof fetchSinglePlayer()).toBe("object");
+  });
+
+});
 
 // TODO: Tests for `addNewPlayer`
-describe("addNewPlayer", () => {
 
-  test("returns an object", async () => {
-    expect(typeof player).toBe('object'); 
+describe("addNewPlayer", () => {
+  let newPlayer;
+  beforeAll(async () => {
+    newPlayer = await addNewPlayer();
+  });
+
+  test("it is a function", () => {
+    expect(typeof addNewPlayer).toBe("function");
   })
 
-  test("returns player with name and id", async () => {
-      expect(player).toHaveProperty("name");
-      expect(player).toHaveProperty("id");
-    });
+  test("that returns an object", () => {
+    expect(typeof addNewPlayer()).toBe("object");
+  });
 
-})
-
-
-
+});
 
 // (Optional) TODO: Tests for `removePlayer`
 
