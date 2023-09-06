@@ -1,61 +1,141 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
+/*-------------------PAGE BACKGROUND-------------------*/
+html{
+  background-image: url(puppybowl_background.JPG);
+}
 /*-------------------NAV BAR-------------------*/
 .navbar {
   margin-bottom: 20px;
   padding: 10px;
-  background-image: linear-gradient(goldenrod, gold, yellow);
-  border-bottom: solid 20px yellow;
+  background-image: linear-gradient(rgb(171, 122, 0), rgb(171, 148, 18), goldenrod);
+  border-bottom: solid 20px goldenrod;
 }
-.navbar a:hover{
+
+.navbar a:hover {
   font-weight: bold;
 }
+
 .navbar>a {
-  color: rgb(0, 26, 78);
+  margin: 40px;
+  color: rgb(4, 4, 75);
+  border: solid 3px rgb(4, 4, 75);
+  box-shadow: 10px 10px 10px  rgb(4, 4, 75);
+  background-color: rgb(188, 186, 203);
   font-family: Arial, Helvetica, sans-serif;
-  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   text-decoration: none;
 }
-/*-------------------GRID-------------------*/
+/*-------------------WHOLE PAGE FLEX-------------------*/
 #player-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  column-gap: 20px;
-  /*Adds spacing between columns; especially the nav bar background color and other content*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 70px;
+  row-gap: 50px;
 }
 
-/*All div children of player container will have this styling. NOTE: some may be changed with !important*/
+/*-------------------STYLING FOR ALL PLAYER CARDS-------------------*/
 #player-container>div {
-  border: solid 5px rgb(0, 26, 78); 
-  border-radius: 10%;
   margin: 10px;
   padding: 20px;
-  background-image: linear-gradient(rgb(0, 26, 78), goldenrod);
-  color: rgb(255, 244, 179);
+  color:goldenrod;
+  text-shadow: rgb(4, 4, 75) 1px 1px;
   font-family: Arial, Helvetica, sans-serif;
+  background-image: url(card_puppyBowl.JPG);
+  background-size: cover;
+  border-radius: 5%;
 }
 
+/*-------------------ALL CARD GRID PLACEMENT-------------------*/
+.player-card {
+  width: 20%;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(6);
+  box-shadow: 20px 20px 10px rgb(3, 29, 5);
+}
+.player-card>h2{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.player-card>h3{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.player-card>img{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+button{
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+/*-------------------SINGLE CARD GRID PLACEMENT-------------------*/
+.single-player-card {
+  width: 20%;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(6);
+  box-shadow: 20px 20px 10px rgb(3, 29, 5);
+}
+.single-player-card>h2{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.single-player-card>h3{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+.single-player-card>img{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+.single-player-card>h4{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  color: goldenrod
+}
 /*-------------------PUPPY IMAGE-------------------*/
 /*Sizing for puppy images */
 img {
   margin-top: 10px;
   margin-bottom: 10px;
-  border: solid 5px rgb(0, 26, 78);
-  height: 200px;
-  width: 150px;
-  align-items: center;
+  border-radius: 10%;
+  padding: 10px;
+  height: 330px;
+  width: 260px;
 }
+
 /*-------------------BUTTON STYLING-------------------*/
 button {
   border-radius: 50%;
   margin: 10px;
   padding: 20px;
-  background-color: rgb(106, 42, 42);
-  color: rgb(255, 244, 179);
+  width: 120px;
+  height: 30px;
+  background-image: url(football-background.JPG);
+  background-size: cover;
+  color: beige;
+  font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
+/*TO DO: Hover on buttons*/
